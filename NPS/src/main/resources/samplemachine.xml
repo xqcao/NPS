@@ -1,0 +1,38 @@
+<scxml xmlns="http://www.w3.org/2005/07/scxml" xmlns:cs="http://commons.apache.org/scxml"
+	version="1.0" initial="start">
+	<state id="start">
+		<transition event="SETV1" target="SETV1" />
+	</state>
+	<state id="SETV1">
+		<onentry>
+			<assign name="sizeOFBox" expr="set:{small, medium, large}" />
+			<assign name="region" expr="set:{local, international}" />
+			<assign name="transport" expr="set:{truck,car,bike}" />
+			<assign name="insurance" expr="set:{cheap, average, expensive}" />
+			<assign name="arrival" expr="set:{safe,damaged,lost,arrived}" />			
+		</onentry>
+		<!--  <transition event="SETV2" target="SETV2" />-->
+		<transition event="sizeOFBox==small" target="SETV6" />
+		<transition event="sizeOFBox==medium" target="SETV7" />
+		<transition event="sizeOFBox==large" target="SETV8" />
+	</state>
+	<state id="SETV6">
+		<onentry>
+			<assign name="var_out_V1" expr="#{size1}" />
+		</onentry>
+		<transition target="end" />
+	</state>
+	<state id="SETV7">
+		<onentry>
+			<assign name="var_out_V1" expr="#{size2}" />
+		</onentry>
+		<transition target="end" />
+	</state>
+	<state id="SETV8">
+		<onentry>
+			<assign name="var_out_V1" expr="#{size3}" />
+		</onentry>
+		<transition target="end" />
+	</state>
+	<final id="end"></final>
+</scxml>
